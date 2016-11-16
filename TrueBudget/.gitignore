@@ -1,0 +1,27 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Hibernate DB Settings
+hibernate.cfg.xml
+
+#Ticketmaster
+TicketmasterKey.java
+
+#Google
+GoogleKey.java
+
+# Maven
+log/
+target/
+
+*.class
