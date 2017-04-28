@@ -38,7 +38,7 @@ public class DAO {
 		Configuration configuration = new Configuration();
 		// matching POJO created to hibernate
 		configuration.configure("hibernate.cfg.xml");
-		configuration.addResource("user.hbm.xml");
+		configuration.addResource("User.hbm.xml");
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties()).build();
 		factory = configuration.buildSessionFactory(serviceRegistry);
@@ -53,10 +53,10 @@ public class DAO {
 		//Transaction begins
 		hibernateSession.getTransaction().begin();
 		try {
-			String query = "FROM user WHERE username='" + user.getUsername() + "'";
+			String query = "FROM User WHERE username='" + user.getUsername() + "'";
 			User singleUser = (User) hibernateSession.createQuery(query).getSingleResult();
-			BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
-			if (passwordEncryptor.checkPassword(user.getPassword(), singleUser.getPassword())){
+			//BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
+			if (/*passwordEncryptor.checkPassword( */user.getPassword().equals(singleUser.getPassword())/*)*/){ 
 				hibernateSession.getTransaction().commit();
 				hibernateSession.close();
 				return singleUser;
@@ -82,7 +82,7 @@ public class DAO {
 		Session hibernateSession = factory.openSession();
 		hibernateSession.getTransaction().begin();
 		try {
-			String query = "FROM user WHERE username='" + user.getUsername() + "'";
+			String query = "FROM User WHERE username='" + user.getUsername() + "'";
 			User singleUser = (User) hibernateSession.createQuery(query).getSingleResult();
 			System.out.println("Found: " + singleUser.getUsername());
 		} catch (Exception e) {
@@ -101,7 +101,7 @@ public class DAO {
 		if (factory == null)
 			setupFactory();
 		BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
-		u.setPassword(passwordEncryptor.encryptPassword(u.getPassword()));
+		//u.setPassword(passwordEncryptor.encryptPassword(u.getPassword()));
 		Session hibernateSession = factory.openSession();
 		hibernateSession.getTransaction().begin();
 		hibernateSession.save(u);

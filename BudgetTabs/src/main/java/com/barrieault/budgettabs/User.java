@@ -4,31 +4,24 @@ import javax.persistence.*;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.jasypt.util.password.PasswordEncryptor;
 @Entity
-@Table(name="user")
 
 public class User {
 	@NotEmpty
-	   @Column(name = "username")
 	private String username;
 	@NotEmpty
-	   @Column(name = "password")
 	private String password;
 	@Email
 	@NotEmpty
-	   @Column(name = "email")
 	private String email;
 	
 	@Id @GeneratedValue
-	   @Column(name = "ID")
 	private int ID;
-	   @Column(name = "spendingMax")
 	private int spendingMax;
-	   @Column(name = "currentSpent")
 	private int currentSpent;
-	   @Column(name = "newPurchase")
 	private int newPurchase;
 	
 	

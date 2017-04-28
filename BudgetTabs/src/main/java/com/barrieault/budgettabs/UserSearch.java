@@ -11,7 +11,7 @@ public class UserSearch {
 		for(User u: users){
 			if(u.getUsername().equalsIgnoreCase(username)){
 				//System.out.println(passwordEncryptor.encryptPassword(password));
-				if(passwordEncryptor.checkPassword(password, u.getPassword())){
+				if(/*passwordEncryptor.checkPassword(*/password.equals(u.getPassword())/*)*/){
 					return u;
 				}
 			}

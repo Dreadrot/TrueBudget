@@ -83,7 +83,7 @@ public class HomeController {
 		User user = new User();
 		//adding new user to model
 		model.put("addUser", user);
-		DAO.isUsernameTaken(user);
+		//DAO.isUsernameTaken(user);
 		//sending to create account form page 
 		return "createaccount";
 	}
@@ -96,11 +96,11 @@ public class HomeController {
         	//creating new cookie with username + user id
         	Cookie username = new Cookie ("username", addUser.getUsername());
     		Cookie userid = new Cookie("userid", ("" + addUser.getID()));
-    		response.addCookie(username);
-    		response.addCookie(userid);
+    		//response.addCookie(username);
+    		//response.addCookie(userid);
     		//adding values to model with ID/Username
-    		model.addAttribute("userid", addUser.getID());
-    		model.addAttribute("username", addUser.getUsername());
+    		//model.addAttribute("userid", addUser.getID());
+    		//model.addAttribute("username", addUser.getUsername());
         }else{
         	//please try again re-route to create account (loginfailed.jsp)
         	return new ModelAndView ("login");
