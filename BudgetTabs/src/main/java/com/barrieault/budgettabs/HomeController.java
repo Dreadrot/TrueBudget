@@ -89,24 +89,24 @@ public class HomeController {
 	}
 	//mapping for retrieving user input into 
 	@RequestMapping(value = "/adduser", method=RequestMethod.POST)    
-    public ModelAndView checkPersonInfo(HttpSession session, Model model, @ModelAttribute("addUser") User addUser,HttpServletResponse response) {
+    public String checkPersonInfo(HttpSession session, Model model, @ModelAttribute("addUser") User addUser,HttpServletResponse response) {
         //testing to see if username taken
         if(!DAO.isUsernameTaken(addUser)){
         	DAO.addUser(addUser);
         	//creating new cookie with username + user id
         	Cookie username = new Cookie ("username", addUser.getUsername());
     		Cookie userid = new Cookie("userid", ("" + addUser.getID()));
-    		//response.addCookie(username);
-    		//response.addCookie(userid);
+    		response.addCookie(username);
+    		response.addCookie(userid);
     		//adding values to model with ID/Username
-    		//model.addAttribute("userid", addUser.getID());
-    		//model.addAttribute("username", addUser.getUsername());
+    		model.addAttribute("userid", addUser.getID());
+    		model.addAttribute("username", addUser.getUsername());
         }else{
         	//please try again re-route to create account (loginfailed.jsp)
-        	return new ModelAndView ("login");
+        	return "login";
         }
         //return a success page(userprofile.jsp)
-        return new ModelAndView ("home");
+        return "redirect:/home";
     }
 	@RequestMapping("/logout")
 	public ModelAndView accessLogout(@CookieValue("username") Cookie username,@CookieValue("userid") Cookie userid, HttpServletResponse response){

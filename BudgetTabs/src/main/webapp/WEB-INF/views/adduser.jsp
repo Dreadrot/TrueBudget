@@ -5,30 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Redirecting...</title>
 </head>
 <body>
-<form:form action="form" method="post" modelAttribute="addUser">
-            <table>
-                <tr>
-                    <td><form:label path="username">Username</form:label></td>
-                    <td><form:input path="username"/></td>
-
-                </tr>
-                <tr>
-                    <td><form:label path="password">Password</form:label></td>
-                    <td><form:input path="password"/></td>
-
-                </tr>
-                 <tr>
-                    <td><form:label path="email">E-mail</form:label></td>
-                    <td><form:input path="email"/></td>
-
-                </tr>
-                <tr>
-                    <td><button type="submit">Submit</button></td>
-                </tr>
-            </table>
-        </form:form>
+	Redirecting you home.
+	If it's taking too long, <a href="home">Click This Link</a>
 </body>
 </html>

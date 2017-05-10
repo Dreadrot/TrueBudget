@@ -10,8 +10,8 @@ public class UserSearch {
 		BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 		for(User u: users){
 			if(u.getUsername().equalsIgnoreCase(username)){
-				//System.out.println(passwordEncryptor.encryptPassword(password));
-				if(/*passwordEncryptor.checkPassword(*/password.equals(u.getPassword())/*)*/){
+				System.out.println(passwordEncryptor.encryptPassword(password));
+				if(passwordEncryptor.checkPassword(password,u.getPassword())){
 					return u;
 				}
 			}

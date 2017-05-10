@@ -1,6 +1,8 @@
 package com.barrieault.budgettabs;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -8,7 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.jasypt.util.password.PasswordEncryptor;
 @Entity
-
+@Table(name="user")
 public class User {
 	@NotEmpty
 	private String username;
@@ -20,6 +22,7 @@ public class User {
 	
 	@Id @GeneratedValue
 	private int ID;
+	@NotNull
 	private int spendingMax;
 	private int currentSpent;
 	private int newPurchase;
@@ -68,6 +71,13 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public boolean isItAffordable(){
+		if(this.getSpendingMax() - this.getCurrentSpent() - this.getNewPurchase() >= 0){
+			return true;			
+		}
+		return false;
 	}
 
 

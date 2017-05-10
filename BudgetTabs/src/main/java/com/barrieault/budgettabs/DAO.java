@@ -55,8 +55,8 @@ public class DAO {
 		try {
 			String query = "FROM User WHERE username='" + user.getUsername() + "'";
 			User singleUser = (User) hibernateSession.createQuery(query).getSingleResult();
-			//BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
-			if (/*passwordEncryptor.checkPassword( */user.getPassword().equals(singleUser.getPassword())/*)*/){ 
+			BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
+			if (passwordEncryptor.checkPassword(user.getPassword(),singleUser.getPassword())){ 
 				hibernateSession.getTransaction().commit();
 				hibernateSession.close();
 				return singleUser;
@@ -101,7 +101,7 @@ public class DAO {
 		if (factory == null)
 			setupFactory();
 		BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
-		//u.setPassword(passwordEncryptor.encryptPassword(u.getPassword()));
+		u.setPassword(passwordEncryptor.encryptPassword(u.getPassword()));
 		Session hibernateSession = factory.openSession();
 		hibernateSession.getTransaction().begin();
 		hibernateSession.save(u);

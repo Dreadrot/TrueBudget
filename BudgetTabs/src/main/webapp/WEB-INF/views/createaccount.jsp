@@ -25,6 +25,10 @@
     <form:input type="text" path="email" name="email" size="40" maxlength="32" placeholder="someone@somewhere.com" />      
   </label>
   <br>
+   <label class="fieldLabel"> Your Max Budget:
+    <form:input type="number" path="spendingMax" name="spendingMax" maxlength="11" placeholder="500" />      
+  </label>
+  <br>
   <div class="buttons">
     <input type="submit" name="submit" value="Create Account" />
     <input type="reset" name="reset" value="Clear Form" />
