@@ -25,7 +25,7 @@ public class User {
 	@NotNull
 	private int spendingMax;
 	private int currentSpent;
-	private int newPurchase;
+	//private int newPurchase;
 	
 	
 	public int getSpendingMax() {
@@ -40,12 +40,12 @@ public class User {
 	public void setCurrentSpent(int currentSpent) {
 		this.currentSpent = currentSpent;
 	}
-	public int getNewPurchase() {
+	/*public int getNewPurchase() {
 		return newPurchase;
 	}
 	public void setNewPurchase(int newPurchase) {
 		this.newPurchase = newPurchase;
-	}
+	} */
 	public int getID() {
 		return ID;
 	}
@@ -73,12 +73,14 @@ public class User {
 		this.email = email;
 	}
 	
-	public boolean isItAffordable(){
-		if(this.getSpendingMax() - this.getCurrentSpent() - this.getNewPurchase() >= 0){
+/*
+ 	public boolean isItAffordable(String newPurchase){
+		int newPurchaseValue = Integer.parseInt(newPurchase);
+		if(this.getSpendingMax() - this.getCurrentSpent() - newPurchaseValue >= 0){
 			return true;			
 		}
 		return false;
 	}
-
+*/
 
 }

@@ -13,6 +13,6 @@
 		<property name="password" column="password" type="string"></property>
 		<property name="spendingMax" column="spendingMax" type="int"></property>
 		<property name="currentSpent" column="currentSpent" type="int"></property>
-		<property name="newPurchase" column="newPurchase" type="int"></property>
+   <!-- <property name="newPurchase" column="newPurchase" type="int"></property> -->
 	</class>	
 </hibernate-mapping> 

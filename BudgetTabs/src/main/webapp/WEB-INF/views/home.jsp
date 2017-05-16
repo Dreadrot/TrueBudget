@@ -16,6 +16,7 @@ Oh man, this is overwhelming. Let's start simple.
 <a href="createaccount">Create a user. Maybe.</a>
  </c:if>
  <c:if test="${cookie.username.value != null}">
+ <a href="checkAffordability">Check to see if the item works!</a>
   <li><a href="logout">Logout</a></li>
  </c:if>
 </body>
